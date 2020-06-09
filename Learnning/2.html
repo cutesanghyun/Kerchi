@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <title>이상현</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href='../style.css'>
+</head>
+
+<body>
+  <h1><a href="index.html" title="메인항목으로 이동">'생활 코딩' 강의 노트</a></h1>
+  <div id='goHome'><a href="../index.html" title="메인항목으로 이동">메인 페이지로</a></div>
+  <div class=born>
+    <ol id=bear>
+      <script src="index.js"></script>
+    </ol>
+    <div class=lion>
+      <h2>CSS</h2>
+      <div class=text>
+        <h4>실습에 사용된 'HTML' 태그</h4>
+        <ul>
+          <li>font</li>
+          <li>!-- ~ --: html의 주석처리</li>
+          <li>style: CSS를 사용하는 태그 </li>
+          <li>class</li>
+          <li>id</li>
+          <li>div: 별도의 효과가 없는 block level element</li>
+          <li>span: 별도의 효과가 없는 inline element</li>
+          <li>link: css파일과 연결</li>
+        </ul>
+        <h4>실습에 사용된 'css' 선택자(celector)</h4>
+        <ul>
+          <li>.~: 클래스 선택자</li>
+          <li>#~: id 선택자 </li>
+        </ul>
+        <h4>실습에 사용된 'css' 효과(선언-declaration)</h4>
+        <ul>
+          <li>color</li>
+          <li>text-decoration</li>
+          <li>text-align</li>
+          <li>font-size</li>
+          <li>border-bottom</li>
+          <li>border-style</li>
+          <li>padding</li>
+          <li>padding-left</li>
+          <li>margin</li>
+          <li>width</li>
+          <li>/* ~ */: css의 주석처리</li>
+          <li>display:block</li>
+          <li>display:inline</li>
+          <li>display:none</li>
+          <li>grid-template-columns</li>
+          <li>@media(min-width:500px): 미디어쿼리, 반응형디자인 제작에 사용</li>
+          <li>background-image: 네이버 로고와 네이버글자가 처리된 기법</li>
+        </ul><br><br>
+        <h4>기타 정리</h4>
+        <p>
+          - css를 사용하는 태그인 style은 적용대상을 의미하는 '선택자(celector)'와 내용에 해당하는 '선언(declaration)',
+          즉 '효과'를 필요로 한다.<br><br>
+          - 선언의 내용은 '속성(property)'과 '속성값(property value)' 2가지로 구성된다.<br><br>
+          - 선언뒤에는 ';'를 추가하여 적용범위를 특정지어야 한다.<br><br>
+          - 코드는 위에서 아래로 순차적으로 실행된다.(아래쪽이 위보다 실행에서 우선권을 가지게된다.)<br><br>
+          - 아이디선택자, 클래스선택자, 태그선택자 순으로 실행에서 우선권을 가지게된다.<br><br>
+          - 화면 전체를 쓰는 태그들을 block level element(태그), 자신의 콘텐츠 부피만큼만 쓰는 태그들을 inline element 라고 칭한다.<br><br>
+          - 선택자는 ','를 통해 중복지정이 가능하다.<br><br>
+          - 레이아웃을 잡기 위해서 그리드를 사용한다.<br><br>
+          - columns은 열, low는 행<br><br>
+          - 다양한 웹환경에 일일이 맞추기 위해서는 미디어쿼리가 필요<br><br>
+          - ~보다 클때: min / ~보다 작을때: max / 개념 이해<br><br>
+          - 코딩을 잘하려면 중복의 제거가 필수. 완성도를 높이고 수정,편집의 편의성을 높인다.<br><br>
+          - css를 링크 태그로 빼버리면 수정,편집의 편의성을 높이고 네트워크 트래픽을 일시적으로는 증가시키게되나,캐쉬라는 개념의 존재때문에 결과적으로는 트래픽 마저 감소시키게된다.<br><br>
+          - 자식과 자손은 다르다. 자식을 선택할때는 '부모 > 자식', 자손을 선택할때는 '부모 자식'<br><br>
+          - 시각장애인을 위해 화면에는 보이지 않지만 스크린리더가 읽어주게 설정하는 방법도 있다(네이버 검색클래스처럼)
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="bottomBlank">©2020 Kerchi
+  </div>
+</body>
+
+</html>

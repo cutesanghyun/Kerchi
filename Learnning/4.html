@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <title>이상현</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href='../style.css'>
+</head>
+
+<body>
+  <h1><a href="index.html" title="메인항목으로 이동">'생활 코딩' 강의 노트</a></h1>
+  <div id='goHome'><a href="../index.html" title="메인항목으로 이동">메인 페이지로</a></div>
+  <div class=born>
+    <ol id=bear>
+      <script src="index.js"></script>
+    </ol>
+    <div class=lion>
+      <h2>JavaScript2</h2>
+      <div class=text>
+        <h4>실습에 사용된 'Javascript'의 속성</h4>
+        <ul>
+          <li>배열과 관련된 속성들                      
+            <ul>
+            <li>split(): 문자열 객체를 지정한 구분자를 이용하여 여러 개의 문자열로(즉, 배열이 됨) 나눔</li>
+            <li>splice(시작점, 지울갯수, 새로추가할 아이템): 배열의 기존 요소를 삭제 또는 교체하거나 새 요소를 추가하여 배열의 내용을 변경</li> 
+            <li>slice(): 어떤 배열의 begin부터 end까지(end 미포함)에 대한 얕은 복사본을 '새로운' 배열 객체로 반환</li>
+            <li>join(): 배열의 모든 요소를 연결해 하나의 문자열로</li> 
+            <li>push():배열의 끝에 하나 이상의 새로운 요소를 추가, 배열의 새로운 길이를 반환</li>            
+            <li>pop(): 배열에서 마지막 요소를 제거하고 그 요소를 반환</li> 
+            <li>shift(): 배열에서 첫 번째 요소를 제거하고, 제거된 요소를 반환, 배열의 길이 변화</li>
+            <li>unshift(): 새로운 요소를 배열의 맨 앞쪽에 추가하고, 새로운 길이를 반환</li>  
+            <li>includes():배열이 특정 요소를 포함하고 있는가</li>
+            <li>forEach(): 주어진 함수를 배열 요소 각각에 대해 실행</li>    
+            <li>indexOf(): 문자열 객체 혹은 배열에서 주어진 값과 일치하는 첫 번째 인덱스를 반환. 일치하는 값이 없으면 -1을 반환</li>  
+            <li>array(): 새로운 배열 객체를 생성</li>    
+            <li>fill(): (고정값,시작,끝)배열의 시작 인덱스부터 끝 인덱스의 이전까지 고정값으로 채움</li> 
+            <li>map(): 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 '새로운' 배열을 반환</li>
+            <li>sort(): 배열의 요소를 적절한 위치에 정렬한 후 그 배열을 반환</li>
+            <li>filter(): 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환</li>
+            <li>filter((v) => !!v): 값이 없는 요소들을 제외한 나머지 요소를 모아 새로운 배열로 반환</li>
+            <li>concat(): 인자로 주어진 배열이나 값들을 기존 배열에 합쳐서 새 배열을 반환</li>            
+          </ul></li>
+          <li>var: 옛날문법에서의 변수, const: 변경이 불가능한 신규 변수, let: 변경이 가능한 신규 변수</li>
+          <li>addEventListener: 이벤트를 등록할때 가장 권장되는 사용법, 메소드</li>
+          <li>textcontent: 얘는 script 와 style 요소를 포함한 모든 요소의 콘텐츠를 가져오는 반면 innerText 는 사람이 읽을 수 있는 요소만 처리 </li>
+          <li>focus(): 텍스트창의 경우 마우스 커서 위치, 버튼의 경우 엔터키를 누르면 클릭효과</li>                  
+          <li>document.head.parentNode.removeChild(document.head); :헤드를 날려서 css 제거하고 보기위해 사용</li>
+          <li>Math.random(): 0이상 1미만 사이의 랜덤한 수 생성</li>
+          <li>Math.floor(): 내림</li>
+          <li>Math.abs(): 절대값</li>
+          <li>.reapeat(): 앞의 문자열 ~만큼 반복</li>
+          <li>('~${~}'): 문자열 안에 변수 넣는 법</li>         
+          <li>appendChild(): 한 노드를 특정 부모 노드의 자식 노드 리스트 중 마지막 자식으로 붙임</li>
+          <li>ParentNode.append(): ParentNode의 마지막 자식 뒤에 Node 객체 또는 DOMString 객체를 삽입. DOMString 객체는 Text 노드처럼 삽입</li>
+          <li>Document.createTextNode(): 텍스트 노드를 생성</li>
+          <li>createElement(): 지정한 tagName의 HTML 요소를 만들어 반환</li>          
+          <li>substring(): string 객체의 시작 인덱스로 부터 종료 인덱스 전 까지 문자열의 부분 문자열을 반환</li>
+          <li>getElementById(): 주어진 문자열과 일치하는 id 속성을 가진 요소를 찾고, 이를 나타내는 Element 객체를 반환</li>
+          <li>setTimeout(): 타이머가 만료된 뒤 함수나 지정된 코드를 실행하는 타이머를 설정</li>
+          <li>setInterval(): 지정된 시간간격마다 함수나 지정된 코드를 반복적으로 실행</li>
+          <li>clearInterval(): setInterval()로 지정되어있는 시간간격을 취소</li>
+          <li>Object.entries(): 객체를 2차원 배열로 반환</li>
+          <li>Object.keys(): 객체의 키들을 배열로 반환</li>
+          <li>find(): 주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환</li>
+          <li>parseInt(): 문자열 인자의 구문을 분석해 특정 진수(수의 진법 체계에 기준이 되는 값)의 정수를 반환</li>
+        </ul>
+        <h4>기타 정리</h4><br>
+        - 변수는 실제 사용코드와 가깝게 배치해야 수정편집이 용이하다<br><br>
+        - 변수를 지정할때의 '=' 은 같다는 의미가 아니니 값을 맞겨두는거라고 생각<br><br>
+        - 변수의 생명력은 그 단락안에서 종료<br><br>
+        - 중복되는 코드를 변수로 지정할때는 실행순서를 지키도록 유의<br><br> 
+        - 변수명에는 흔히 단어를 차례대로 나열하면서 첫 단어를 제외한 단어들의 첫글자만 대문자로 표기하는 카멜 표기법이 사용된다<br><br>
+        - 변수명에는 오직 문자와 숫자, 그리고 기호 $와 _만 들어갈 수 있으며 첫 글자는 숫자가 될 수 없다<br><br>    
+        - 가장위에 위치해서 처음부터 끝까지 생존하는 변수를 전역변수라고 한다<br><br>
+        - 배열은 객체다<br><br>
+        - 변수와 문자열을 같이 쓸때는 전체를 백틱으로 감싸고 변수를 ${변수} 라고 쓰면 편하다<br><br>
+        - textContent는 기존 글자를 지우고 쓰지만 appendChild(Document.createTextNode())는 기존글자 뒤에 추가로 붙힌다.<br><br>
+        - Javascript로 css를 조작할때 - 는 오작동을 일으키므로 - 를 없애는 대신 이후 오는 단어의 첫글자를 대문자로<br><br>
+        - target은 실제 이벤트가 발생한 대상, curruntTarget은 이벤트리스너가 달린 대상<br><br>
+        - 어쩌고저쩌고 = 값 || 값 : 이것은 앞의 값이 거짓일때만(false, '', 0, null, undefined, NaN) 뒤에값을 대신쓴다는 의미<br><br>        
+        <br><br>
+      </div>
+    </div>
+  </div>
+  <div id="bottomBlank">©2020 Kerchi
+  </div>
+</body>
+
+</html>

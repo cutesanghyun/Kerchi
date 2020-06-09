@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <title>이상현</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href='../style.css'>
+</head>
+
+<body>
+    <h1><a href="index.html" title="메인항목으로 이동">'생활 코딩' 강의 노트</a></h1>
+    <div id='goHome'><a href="../index.html" title="메인항목으로 이동">메인 페이지로</a></div>
+    <div class=born>
+        <ol id=bear>
+            <script src="index.js"></script>
+        </ol>
+        <div class=lion>
+            <h2>크롤링</h2>
+            <div class=text>
+                <h4>네이버 날씨 정보에서 미세먼지 가져오기</h4>
+                from bs4 import BeautifulSoup<br>
+                from pprint import pprint<br>
+                import requests<br><br>
+                html = requests.get('주소')<br>
+                #주소가져오기<br><br>
+                soup = BeautifulSoup(html.text,'html.parser')<br>
+                #가져온데이터를 뷰티풀숲으로 분석 및 파싱.1차가공<br><br>
+                data1 = soup.find('div', {'class':'detail_box'})<br>
+                #1차가공결과내에서 div태그중 클래스값이 detail_box인 첫번째 타겟을 탐색.2차가공<br><br>
+                data2 = data1.findAll('dd')<br>
+                #2차가공결과내에서 모든 dd태그들을 탐색. 3차가공<br><br>
+                data3 = data2[0].find('span',{'class': 'num'}).text<br>
+                #3차가공결과내에서 span태그중 클래스값이 num인 첫번째 타겟을 탐색.해당 태그내의 텍스트를 가져옴.4차가공 및 작업 완료<br><br>
+                <h4>네이버 웹툰 제목들 가져오기</h4>
+                from bs4 import BeautifulSoup<br>
+                from pprint import pprint<br>
+                import requests<br><br>
+                html = requests.get('https://comic.naver.com/webtoon/weekday.nhn')<br>
+                soup = BeautifulSoup(html.text, 'html.parser')<br>
+                data1=soup.find('div', {'class':'col_inner'})<br>
+                data2=data1.findAll('a', {'class':'title'})<br><br>
+                title_list = []<br>
+                for t in data2:<br>
+                title_list.append(t.text)<br><br>
+                title_list = [t.text for t in data2]<br>
+                #list내에서 for문을 사용하는 방법. 위의 for문과 동일함<br><br>
+                <h4>닌자에서 엑잘 시세가져오기</h4>
+                from bs4 import BeautifulSoup<br>
+                from selenium import webdriver<br>
+                import time<br><br>
+                url = 'https://poe.ninja/challenge/currency'<br><br>
+                driver = webdriver.Chrome()<br>
+                driver.get(url)<br><br>
+                time.sleep(3)<br><br>
+                html = driver.page_source<br>
+                soup = BeautifulSoup(html)<br><br>
+                data = soup.find('tbody').findAll('tr')<br>
+                # tbody영역내의 모든 tr들 찾기<br><br>
+                global showprice<br>
+                # 글로벌 변수 지정(값이 반복문안의 조건문 속에 있기때문)<br><br>
+                for tr in data:<br>
+                target = tr.findAll('img',{'title':'엑잘티드 오브'})<br>
+                # 타이틀의 속성값이 엑잘티드 오브인 img태그가 담겨있는 tr 찾기<br><br>
+                if target:<br>
+                # 만약 그런 tr을 찾았으면,<br><br>
+                showprice = tr.find('span',{'class':'currency-amount'}).text<br>
+                # 해당 tr내에서 class의 속성값이 currency-amount인 span 태그를 찾아서 해당 태그의 텍스트값(현재시세)을 전역변수 showprice에 할당<br><br>
+                print(showprice)<br>
+                driver.close()
+            </div>
+        </div>
+    </div>
+    <div id="bottomBlank">©2020 Kerchi
+    </div>
+</body>
+
+</html>
