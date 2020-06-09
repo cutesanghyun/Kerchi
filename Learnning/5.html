@@ -316,106 +316,106 @@
           <li>gun = 10</li>
           <li>def checkPoint(soldiers):</li>
           <ul>
-            <li>global gun  #전역 변수 gun호출</li>
-            <li>gun = gun - soldier</li>            
-          </ul><br> 
+            <li>global gun #전역 변수 gun호출</li>
+            <li>gun = gun - soldier</li>
+          </ul><br>
           <li>gun = 10</li>
           <li>def checkPoint(gun, soldiers):</li>
           <ul>
-            <li>gun = gun - soldier</li>  
-            <li>return gun</li>          
-          </ul>             
+            <li>gun = gun - soldier</li>
+            <li>return gun</li>
+          </ul>
           <li>gun = checkPoint(gun, 2)</li>
         </ul>
         <h4>표준 입출력</h4>
         <ul>
           <li>print('python', 'java', sep='~')<br>
-          ~안에 넣은 문자열이 각 항목 사이마다 삽입</li>
+            ~안에 넣은 문자열이 각 항목 사이마다 삽입</li>
           <li>print('python', 'java', end='~')<br>
-          ~안에 넣은 문자열이 마지막에 삽입+줄바꿈 안됨</li>
+            ~안에 넣은 문자열이 마지막에 삽입+줄바꿈 안됨</li>
           <li>import sys<br>
-          print('python', 'java', file=sys.stdout)<br>
-          #표준출력<br><br>
-          print('python', 'java', file=sys.stderr)<br>
-          #표준에러</li><br>
+            print('python', 'java', file=sys.stdout)<br>
+            #표준출력<br><br>
+            print('python', 'java', file=sys.stderr)<br>
+            #표준에러</li><br>
           <li>scores = {'수학':0, '영어':100, '코딩':50}<br>
-          for subject, score in scores.items():<br>
-          print(subject.ljust(8), str(score).rjust(4), sep=':')<br>
-          #subject는 8칸 확보후 왼쪽정렬, score는 4칸 확보후 오른쪽정렬</li><br>
+            for subject, score in scores.items():<br>
+            print(subject.ljust(8), str(score).rjust(4), sep=':')<br>
+            #subject는 8칸 확보후 왼쪽정렬, score는 4칸 확보후 오른쪽정렬</li><br>
           <li>for num in range(1,21):<br>
-          print('대기번호 : ' + str(num).zfill(3))<br>
-          #3자리수로 만들고 없는 숫자자리는 0으로 채움</li>
+            print('대기번호 : ' + str(num).zfill(3))<br>
+            #3자리수로 만들고 없는 숫자자리는 0으로 채움</li>
         </ul>
         <h4>다양한 출력 포맷</h4>
         <ul>
           <li>print('{0: >10'.format(500)}<br>
-          빈 자리는 빈공간으로 두고, 오른쪽 정렬을 하되, 총 10자리 공간을 확보한뒤 500출력<br><br>
-          print('{0: >+10}'.format(500)<br>
-          양수일땐 +, 음수일때 -<br><br>
-          print('{0:_<+10}'.format(500))<br>
-          왼쪽정렬하고, 빈칸은 _로 채움<br><br>
-          print('{0:,}'.format(1000000000))<br>
-          3자리마다 콤마 찍어주기<br><br>
-          print('{0:.2f}'.format(5/3))<br>
-          소수점 3번째자리에서 반올림후(2번째자리까지) 출력<br><br>
+            빈 자리는 빈공간으로 두고, 오른쪽 정렬을 하되, 총 10자리 공간을 확보한뒤 500출력<br><br>
+            print('{0: >+10}'.format(500)<br>
+            양수일땐 +, 음수일때 -<br><br>
+            print('{0:_<+10}'.format(500))<br>
+              왼쪽정렬하고, 빈칸은 _로 채움<br><br>
+              print('{0:,}'.format(1000000000))<br>
+              3자리마다 콤마 찍어주기<br><br>
+              print('{0:.2f}'.format(5/3))<br>
+              소수점 3번째자리에서 반올림후(2번째자리까지) 출력<br><br>
           </li>
         </ul>
         <h4>파일 입출력</h4>
         <ul>
           <li>score_file = open('score.txt', 'w', encoding='utf8')<br>
-          print('수학 : 0', file=scroe_file)<br>
-          print('영어 : 50', file=score_file)<br>
-          score_file.close()<br>
-          #파일을 쓰는 방법<br><br>
-          score_file = open('score.txt', 'a', encoding='utf8)<br>
-          score_file.write('과학 : 80')<br>
-          score_file.write('\n코딩 : 100')<br>
-          score)file.close()<br>
-          #파일에 내용 추가하는 방법<br><br>
-          score_file = open('score.txt', 'r', encoding='utf8')<br>
-          print(score.file.read())<br>
-          score_file.close()<br>
-          #파일을 읽어오는 방법<br><br>
-          score_file = open('score.txt', 'r', encoding='utf8')<br>
-          print(score_file.readlin())<br>
-          score_file.close()<br>
-          # 한줄씩 읽기, 한 줄 읽고 커서는 다음 줄로 이동<br>
-          score_file.readlines()<br>
-          # 모든 줄을 읽어와서 리스트 형태로 저장<br><br></li>
+            print('수학 : 0', file=scroe_file)<br>
+            print('영어 : 50', file=score_file)<br>
+            score_file.close()<br>
+            #파일을 쓰는 방법<br><br>
+            score_file = open('score.txt', 'a', encoding='utf8)<br>
+            score_file.write('과학 : 80')<br>
+            score_file.write('\n코딩 : 100')<br>
+            score)file.close()<br>
+            #파일에 내용 추가하는 방법<br><br>
+            score_file = open('score.txt', 'r', encoding='utf8')<br>
+            print(score.file.read())<br>
+            score_file.close()<br>
+            #파일을 읽어오는 방법<br><br>
+            score_file = open('score.txt', 'r', encoding='utf8')<br>
+            print(score_file.readlin())<br>
+            score_file.close()<br>
+            # 한줄씩 읽기, 한 줄 읽고 커서는 다음 줄로 이동<br>
+            score_file.readlines()<br>
+            # 모든 줄을 읽어와서 리스트 형태로 저장<br><br></li>
         </ul>
         <h4>pickle</h4>
         <ul>
           <li>import pickle<br>
-          profile_file = open('profile.pickle', 'wb')
-          profile = {'이름':'박명수','나이':30, '취미':['축구','골프','코딩']}<br>
-          pickle.dump(profile, profile_file) #profile에 있는 정보를 file에 저장<br>
-          profile_file.close()</li>
+            profile_file = open('profile.pickle', 'wb')
+            profile = {'이름':'박명수','나이':30, '취미':['축구','골프','코딩']}<br>
+            pickle.dump(profile, profile_file) #profile에 있는 정보를 file에 저장<br>
+            profile_file.close()</li>
           <li>import pickle<br>
-          profile_file = open('profile.pickle', 'rb')<br>
-          profile = pickle.load(profile_file) #file에 있는 정보를 profile에 불러오기<br>
-          profile_file.close()</li>
+            profile_file = open('profile.pickle', 'rb')<br>
+            profile = pickle.load(profile_file) #file에 있는 정보를 profile에 불러오기<br>
+            profile_file.close()</li>
         </ul>
         <h4>with</h4>
         <ul>
           <li>import pickle<br>
-          with open('profile.pickle', 'rb') as profile_file:<br>
-          print(pickle.load(profile_file)) #close가 필요없음</li>
+            with open('profile.pickle', 'rb') as profile_file:<br>
+            print(pickle.load(profile_file)) #close가 필요없음</li>
           <li>with open('study.txt', 'w', encoding='utf8') as study_file:<br>
-          study_file.write('파이썬을 열심히 공부하고 있어요')</li>
+            study_file.write('파이썬을 열심히 공부하고 있어요')</li>
           <li>with open('study.txt', 'r', encoding='utf8') as study_file:<br>
-          print(study_file.read())</li>
+            print(study_file.read())</li>
         </ul>
         <h4>클래스</h4>
         <ul>
           <li>class Unit:<br>
-          def __init__(self, name, hp, damage):<br>
-          self.name = name<br>
-          self.hp = hp<br>
-          self.damage = damage<br>
-          print('{0} 유닛이 생성 되었습니다.'.format(self.name))<br>
-          print('체력 {0}, 공격력 {1}'.format(self.hp, self.damage))<br><br>
-          marine1 = Unit('마린', 40, 5)<br>
-          tank1 = Unit('탱크, 150, 35)</li>          
+            def __init__(self, name, hp, damage):<br>
+            self.name = name<br>
+            self.hp = hp<br>
+            self.damage = damage<br>
+            print('{0} 유닛이 생성 되었습니다.'.format(self.name))<br>
+            print('체력 {0}, 공격력 {1}'.format(self.hp, self.damage))<br><br>
+            marine1 = Unit('마린', 40, 5)<br>
+            tank1 = Unit('탱크, 150, 35)</li>
         </ul>
         <h4>__init__</h4>
         <ul>
@@ -432,7 +432,7 @@
           <li>class Unit:<br>
             def __init__(self, name, hp):<br>
             self.name = name<br>
-            self.hp = hp</li>  
+            self.hp = hp</li>
           <li>class AttackUnit(Unit):<br>
             def __init__(self, name, hp, damage):<br>
             Unit.__init__(self, name, hp)<br>
@@ -446,16 +446,44 @@
         <h4>예외처리</h4>
         <ul>
           <li>try: <br>
-          어쩌고 저쩌고 코드 <br><br>
-          except ValueErro: <br>
-          print('에러! 잘못된 값을 입력했습니다')<br>
-          # 해당 종류의 에러시 기본출력대신 이렇게 출력<br><br>
-          except: <br>
-          print('알수없는 에러가 발생했습니다')<br>
-          # 모든 종류의 에러시 기본출력대신 이렇게 출력<br>
-          # 조건문속에서 raise '에러타입'을 통해 원하지 않는 조건의 값이 입력될때 의도적으로 에러를 표시할수 있다.<br></li>
+            어쩌고 저쩌고 코드 <br><br>
+            except ValueErro: <br>
+            print('에러! 잘못된 값을 입력했습니다')<br>
+            # 해당 종류의 에러시 기본출력대신 이렇게 출력<br><br>
+            except: <br>
+            print('알수없는 에러가 발생했습니다')<br>
+            # 모든 종류의 에러시 기본출력대신 이렇게 출력<br>
+            # 조건문속에서 raise '에러타입'을 통해 원하지 않는 조건의 값이 입력될때 의도적으로 에러를 표시할수 있다.<br>
+            # class ~(Exception): 을 통해서 디폴트 예외처리 클래스를 상속받은뒤 사용자 정의 에러를 지정할수 있다.</li><br><br>
+          <li>finally:<br>
+            print('')<br>
+            # 위에서 에러가 나든말든 무조건 마지막에 해당 코드가 실행된다.</li>
         </ul>
-        <h4>기타 정리</h4><br>        
+        <h4>모듈</h4>
+        <ul>
+          <li>확장자가 py인 별도의 파일안에 작성된 코드를 저장, 필요할때 호출</li>
+          <li>import 파일명<br>
+              파일명.함수()<br>
+              # 확장자 불필요</li>
+          <li>import 파일명 as 변수<br>
+              변수.함수()<br>
+              # 파일명이 너무 길때 줄이기위해 사용</li>   
+          <li>from 파일명 import *<br>
+              함수()<br>
+              # 함수만 바로 호출가능, *(모든 함수) 대신 특정 함수만 호출 가능
+          </li>
+        </ul>
+        <h4>패키지</h4>
+        <ul>
+          <li>모듈들의 집합. 디렉토리.</li>
+          <li>import 디렉토리명.파일명<br>
+              # from 없을때 모듈내의 함수나 클래스는 import 대상이 될수 없다.</li>
+           <li>import inspect<br>
+               import random<br>
+               print(inspect.getfile(random))<br>
+               # random을 어디서 가져왔는지 위치를 보여줌</li>   
+        </ul>
+        <h4>기타 정리</h4><br>
         - 이유 모를 문자 인코딩 문제가 발생<br><br>
         - \후 줄바꿈을 하면 같은줄로 인식된다<br><br>
       </div>
