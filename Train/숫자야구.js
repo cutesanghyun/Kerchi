@@ -13,6 +13,7 @@ for (i = 0; i < 4; i++) {
     answer.push(number0[randomNumber])
     number0.splice(randomNumber, 1)
 }
+console.log(answer);
 
 let count = 0
 calculate.addEventListener('click', () => {

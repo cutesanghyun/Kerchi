@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='../style.css'>
+    <style>
+        .deck {
+            margin-top: 60px;
+            width: 450px;
+        }
+
+        .card {
+            display: inline-block;
+            width: 80px;
+            height: 120px;            
+            margin: 0px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            perspective: 200px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 1S;
+            transform-style: preserve-3d;
+            margin: 0px;
+        }
+
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+            margin: 0px;
+        }
+
+        .card-front {
+            background-color: skyblue;
+        }
+
+        /* .card-back {
+            background-color: #C8EE9D;
+        } */
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            margin: 0px;
+            border: 1px solid black;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            margin: 0px;
+        }
+    </style>
+    <title>Atelier</title>
+</head>
+
+<body>
+    <h1>습작품</h1>
+    <div id='goHome'><a href="../index.html" title="메인항목으로 이동">메인 페이지로</a></div>
+    <div id="lists">
+        <script src="./lists.js"></script>
+    </div>
+    <h4>카드뒤집기</h4>
+    <script src="./카드뒤집기.js"></script>
+    <div id="bottomBlank">©2020 Kerchi
+    </div>
+</body>
+
+</html>
