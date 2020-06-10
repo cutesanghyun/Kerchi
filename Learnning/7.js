@@ -112,6 +112,12 @@ let wordbook = {
     sore: '염증,상처,아픈,화난',
     mason: '석공,~을돌로짓다',
     liege: '주군,신종의의무가있는',
+    pledge: '약속하다,맹세하다',
+    matrimony: '결혼식,혼례',
+    meddling: '간섭,참견하는',  
+    grudge: '원한,뒤끝',
+    encumbrance: '장애물,귀찮은것',  
+    reside: '거주하다,살다,~에있다',  
 }
 
 let wordbook2 = { 

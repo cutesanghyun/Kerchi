@@ -3,16 +3,18 @@ let ver = 3;
 let deck = document.createElement('div');
 deck.className = 'deck';
 let clickFlag = true;
-let colors = [
-    '#FFADC5', '#B8F3B8', '#CCD1FF', '#FFDDA6',
-    '#EBE5E4', '#9197B5', '#FFADC5', '#B8F3B8',
-    '#CCD1FF', '#FFDDA6', '#EBE5E4', '#9197B5'
-];
+let clickCard = [];
+let clearCard = [];
+let startTime;
+const colors = ['#FFADC5', '#B8F3B8', '#CCD1FF', '#FFDDA6', '#EBE5E4', '#9197B5', '#FFADC5', '#B8F3B8', '#CCD1FF', '#FFDDA6', '#EBE5E4', '#9197B5'];
+let colorsBackup = colors.slice();
 let shuffleColors = [];
-for (i = 0; colors.length > 0; i++) {
-    shuffleColors = shuffleColors.concat(colors.splice(Math.floor(Math.random() * colors.length), 1));
+function shuffle() {
+    for (i = 0; colorsBackup.length > 0; i++) {
+        shuffleColors = shuffleColors.concat(colorsBackup.splice(Math.floor(Math.random() * colorsBackup.length), 1));
+    }
 }
-console.log(shuffleColors);
+shuffle();
 
 function setCard(hor, ver) {
     for (i = 0; i < hor * ver; i++) {
@@ -31,11 +33,42 @@ function setCard(hor, ver) {
         card.appendChild(cardInner);
         deck.appendChild(card);
         card.addEventListener('click', function () {
-            if (clickFlag) {
+            let targetCard = card
+            if (clickFlag && !clearCard.includes(card)) {
                 card.classList.toggle('flipped');
+                clickCard.push(targetCard);
+                if (clickCard.length === 2) {
+                    if (clickCard[0].querySelector('.card-back').style.backgroundColor === clickCard[1].querySelector('.card-back').style.backgroundColor &&
+                        clickCard[0].querySelector('.card-back') !== clickCard[1].querySelector('.card-back')) {
+                        clearCard.push(clickCard[0]);
+                        clearCard.push(clickCard[1]);
+                        clickCard = [];
+                        if (clearCard.length === ver * hor) {
+                            let endTime = new Date();
+                            setTimeout(function () {
+                                alert('클리어 성공 ' + (endTime - startTime) / 1000 + '초 걸렸습니다.')
+                                document.querySelector('.deck').innerHTML = '';
+                                colorsBackup = colors.slice();
+                                clearCard = [];
+                                shuffleColors = [];
+                                startTime = null;
+                                shuffle();
+                                setCard(hor, ver);
+                            }, 1000)
+                        }
+                    } else {
+                        clickFlag = false;
+                        setTimeout(function () {
+                            clickCard[0].classList.remove('flipped');
+                            clickCard[1].classList.remove('flipped');
+                            clickCard = [];
+                            clickFlag = true;
+                        }, 1000)
+                    }
+                }
             }
         });
-        document.body.appendChild(deck);
+        document.querySelector('#wrapper').appendChild(deck);
     }
     document.querySelectorAll('.card').forEach(function (card, index) {
         setTimeout(function () {
@@ -46,9 +79,9 @@ function setCard(hor, ver) {
         document.querySelectorAll('.card').forEach(function (card, index) {
             card.classList.remove('flipped');
             clickFlag = true;
+            startTime = new Date();
         });
-    }, 5000);
-    
+    }, 3000);
 }
 setCard(hor, ver);
 
