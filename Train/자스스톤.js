@@ -1,13 +1,26 @@
-let rivalHero = document.getElementById('rival-hero')
-let myHero = document.getElementById('my-hero')
-let rivalDeck = document.getElementById('rival-deck')
-let myDeck = document.getElementById('my-deck')
-let rivalDeckData = [];
-let myDeckData = [];
-let rivalHeroData;
-let myHeroData;
+let rival = {
+    hero: document.getElementById('rival-hero'),
+    deck: document.getElementById('rival-deck'),
+    cost: document.getElementById('rival-cost'),
+    field: document.getElementById('rival-cards'),
+    deckData: [],
+    fieldData: [],
+    heroData: [],    
+}
 
-function randomCard(hero) {
+let my = {
+    hero: document.getElementById('my-hero'),
+    deck: document.getElementById('my-deck'),
+    cost: document.getElementById('my-cost'),
+    field: document.getElementById('my-cards'),
+    deckData: [],
+    fieldData: [],
+    heroData: [],    
+}
+let turnbtn = document.getElementById('turn-btn');
+let turn = true;
+
+function randomCard(hero, myCard) {
     if (hero) {
         this.atk = Math.ceil(Math.random() * 5);
         this.hp = Math.ceil(Math.random() * 5 + 25);
@@ -17,9 +30,15 @@ function randomCard(hero) {
         this.hp = Math.ceil(Math.random() * 5);
         this.cost = Math.floor((this.atk + this.hp) / 2);
     }
+    if (myCard) {
+        this.mine = true;
+    }
 }
-function cardFactory(hero) {
-    return new randomCard(hero);
+function cardFactory(hero, myCard) {
+    return new randomCard(hero, myCard);
+}
+function deckToField() {
+    
 }
 function cardDomLink(data, dom, hero) {
     let card = document.querySelector('.card-hidden .card').cloneNode(true);
@@ -32,37 +51,91 @@ function cardDomLink(data, dom, hero) {
         name.textContent = 'Hero';
         card.appendChild(name);        
     }
-    dom.appendChild(card);       
+    card.addEventListener('click', function(card) {
+        let myCurrentcost = Number(my.cost.textContent);
+        let rivalCurrentcost = Number(rival.cost.textContent);
+        if (turn && data.mine && !data.hero && myCurrentcost >= data.cost && !data.field) {           
+            let idx = my.deckData.indexOf(data);
+            my.deckData.splice(idx, 1);
+            my.fieldData.push(data);
+            cardDomLink(data, my.field);
+            my.deck.innerHTML = '';
+            my.field.innerHTML = '';
+            my.fieldData.forEach(function(data) {
+                cardDomLink(data, my.field);                    
+            });
+            my.deckData.forEach(function(data) {
+                cardDomLink(data, my.deck);                    
+            });
+            data.field = true;
+            my.cost.textContent = myCurrentcost - data.cost;   
+        } else if (!turn && !data.mine && !data.hero && rivalCurrentcost >= data.cost && !data.field){ 
+            let idx = rival.deckData.indexOf(data);
+            rival.deckData.splice(idx, 1);
+            rival.fieldData.push(data);
+            cardDomLink(data, rival.field);  
+            rival.deck.innerHTML = '';
+            rival.field.innerHTML = '';
+            rival.fieldData.forEach(function(data) {
+                cardDomLink(data, rival.field);                    
+            });
+            rival.deckData.forEach(function(data) {
+                cardDomLink(data, rival.deck);                    
+            });
+            data.field = true;
+            rival.cost.textContent = rivalCurrentcost - data.cost;
+        }
+    }); 
+    dom.appendChild(card);  
 }
-function createRivalDeck(N) {
+function createRivaldeck(N) {
     for (i = 0; i < N; i++) {
-        rivalDeckData.push(cardFactory());
+        rival.deckData.push(cardFactory());
     }
-    rivalDeckData.forEach(function (data) {
-        cardDomLink(data, rivalDeck);
+    rival.deck.innerHTML = '';
+    rival.deckData.forEach(function (data) {
+        cardDomLink(data, rival.deck);
     });
 }
-function createMyDeck(N) {
+function createMydeck(N) {
     for (i = 0; i < N; i++) {
-        myDeckData.push(cardFactory());
+        my.deckData.push(cardFactory(false, true));
     }
-    myDeckData.forEach(function (data) {
-        cardDomLink(data, myDeck);
+    my.deck.innerHTML = '';
+    my.deckData.forEach(function (data) {
+        cardDomLink(data, my.deck);
     });
 }
 function createRivalHero() {
-    rivalHeroData = cardFactory(true);  
-    cardDomLink(rivalHeroData, rivalHero, true);
+    rival.heroData = cardFactory(true);  
+    cardDomLink(rival.heroData, rival.hero, true);
 }
 function createMyHero() {
-    myHeroData = cardFactory(true);
-    cardDomLink(myHeroData, myHero, true)
+    my.heroData = cardFactory(true);
+    cardDomLink(my.heroData, my.hero, true)
 }
 function setting() {
-    createRivalDeck(5);
-    createMyDeck(5);
+    createRivaldeck(5);
+    createMydeck(5);
     createMyHero();
     createRivalHero();
 }
 
 setting();
+
+turnbtn.addEventListener('click', function(){
+    turn = !turn;
+    if (turn) {
+        my.cost.textContent = 10;
+        let supply = 5 - rival.deckData.length;
+        createRivaldeck(supply)
+    } else {
+        rival.cost.textContent = 10;
+        let supply = 5 - my.deckData.length;
+        createMydeck(supply)
+
+    }
+    document.getElementById('rival').classList.toggle('turn');
+    document.getElementById('my').classList.toggle('turn');
+});
+

@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href='../style.css'>
     <style>
+        #my,
+        #rival {
+            display: inline block;
+            vertical-align: top;
+            margin-right: 50px;
+        }
+
+        .turn {
+            border: 1px solid black;
+            background-color: rgb(247, 238, 238);
+        }
+
         div {
             margin: 0;
         }
@@ -26,6 +38,7 @@
             position: relative;
             border: 1px solid black;
             margin-bottom: 10px;
+            background-color: white;
         }
 
         .card-atk,
@@ -45,7 +58,7 @@
 
         .card-atk {
             left: 0;
-            background-color: tomato;            
+            background-color: tomato;
         }
 
         .card-hp {
@@ -64,6 +77,16 @@
             text-align: center;
             font-size: 12px;
         }
+
+        #turn-btn {
+            float: right;
+            position: relative;
+            top: -23px;
+        }
+
+        #my-deck, #rival-deck {            
+            background-color: rgb(200, 230, 209);            
+        }
     </style>
     <title>Atelier</title>
 </head>
@@ -75,20 +98,25 @@
         <script src="./lists.js"></script>
     </div>
     <h4>자스스톤(하스스톤 모방)</h4>
-    <div id="rival-deck">
-    </div>
-    <div id="rival-hero">
-        <div id="my-cost">코스트: <span>10</span></div>
-    </div>
-    <div id="rival-cards" style="height: 110px">
+    <div id="rival">
+        <div id="rival-deck">
+        </div>
+        <div id="rival-hero">
+            <div>코스트: <span id="rival-cost">10</span>/<span>10</span></div>
+        </div>
+        <div id="rival-cards" style="height: 110px">
+        </div>
     </div>
     <hr />
-    <div id="my-cards" style="height: 110px">
-    </div>
-    <div id="my-hero">
-        <div id="my-cost">코스트: <span>10</span></div>
-    </div>
-    <div id="my-deck">
+    <button id='turn-btn'>턴넘기기</button>
+    <div id="my" class="turn">
+        <div id="my-cards" style="height: 110px">
+        </div>
+        <div id="my-hero">
+            <div>코스트: <span id="my-cost">10</span>/<span>10</span></div>
+        </div>
+        <div id="my-deck">
+        </div>
     </div>
     <div class="card-hidden" style="display: none;">
         <div class="card">
