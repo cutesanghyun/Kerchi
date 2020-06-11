@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='../style.css'>
+    <style>
+        div {
+            margin: 0;
+        }
+
+        #rival-deck,
+        #rival-hero,
+        #rival-cards,
+        #my-cards,
+        #my-deck,
+        #my-hero {
+            text-align: center;
+        }
+
+        .card {
+            width: 50px;
+            height: 75px;
+            display: inline-block;
+            position: relative;
+            border: 1px solid black;
+            margin-bottom: 10px;
+        }
+
+        .card-atk,
+        .card-hp,
+        .card-cost {
+            font-size: 12px;
+            text-align: center;
+            line-height: 15px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            border: 1px solid black;
+        }
+
+        .card-atk {
+            left: 0;
+            background-color: tomato;            
+        }
+
+        .card-hp {
+            right: 0;
+            background-color: yellowgreen;
+        }
+
+        .card-cost {
+            bottom: auto;
+            top: 0;
+            left: 0;
+            background-color: skyblue;
+        }
+
+        .card-name {
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+    <title>Atelier</title>
+</head>
+
+<body>
+    <h1>습작품</h1>
+    <div id='goHome'><a href="../index.html" title="메인항목으로 이동">메인 페이지로</a></div>
+    <div id="lists">
+        <script src="./lists.js"></script>
+    </div>
+    <h4>자스스톤(하스스톤 모방)</h4>
+    <div id="rival-deck">
+    </div>
+    <div id="rival-hero">
+        <div id="my-cost">코스트: <span>10</span></div>
+    </div>
+    <div id="rival-cards" style="height: 110px">
+    </div>
+    <hr />
+    <div id="my-cards" style="height: 110px">
+    </div>
+    <div id="my-hero">
+        <div id="my-cost">코스트: <span>10</span></div>
+    </div>
+    <div id="my-deck">
+    </div>
+    <div class="card-hidden" style="display: none;">
+        <div class="card">
+            <div class="card-cost"></div>
+            <div class="card-atk"></div>
+            <div class="card-hp"></div>
+        </div>
+    </div>
+    <script src="./자스스톤.js"></script>
+    <div id="bottomBlank">©2020 Kerchi
+    </div>
+</body>
+
+</html>
