@@ -57,6 +57,20 @@ let wordbook = {
     grudge: '원한,뒤끝',
     encumbrance: '장애물,귀찮은것',  
     reside: '거주하다,살다,~에있다',  
+    dominion: '지배권,주권',
+    debate: '토론,논쟁,논의하다',
+    flock: '모이다,떼짓다,유유상종',
+    implicate: '연루시키다,혐의,유죄',
+    vaguely: '막연히,애매하게,어렴풋이',
+    prerogative: '특권,특전',
+    allegation: '의혹,혐의,진술,주장,해명',
+    solemnly: '진지하게,엄숙하게',
+    perimeter: '경계,주변,외곽',
+    preach: '설교하다,전도하다',
+    fornicate: '아치형의,활모양의,사통하다',
+    incest: '근친상간',
+    prance: '활보,의기양양하게걷다',
+    fetch: '낙찰되다,가져옴,데려옴',
 }
 
 let wordbook2 = {   
