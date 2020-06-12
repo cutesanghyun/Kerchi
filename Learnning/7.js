@@ -71,6 +71,15 @@ let wordbook = {
     incest: '근친상간',
     prance: '활보,의기양양하게걷다',
     fetch: '낙찰되다,가져옴,데려옴',
+    allegiance: '충성,충실',
+    affliction: '고통,불행,고뇌',
+    poverty: '빈곤,가난',
+    pretentious: '허세부리는,자만하는,자부하는',
+    harass: '침략하다,괴롭히다',
+    distract: '주의를빼앗다,관심이멀어지다',
+    disdain: '경멸하다,경멸',
+    breach: '위반,침해,어기다,무너지다,누출',
+    suckle: '키우다,젖을먹이다',
 }
 
 let wordbook2 = {   

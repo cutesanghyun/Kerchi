@@ -5,9 +5,10 @@ let rival = {
     field: document.getElementById('rival-cards'),
     deckData: [],
     fieldData: [],
-    heroData: [],    
+    heroData: [],
+    selectedCard: null,
+    selectedCardData: null,
 }
-
 let my = {
     hero: document.getElementById('my-hero'),
     deck: document.getElementById('my-deck'),
@@ -15,16 +16,24 @@ let my = {
     field: document.getElementById('my-cards'),
     deckData: [],
     fieldData: [],
-    heroData: [],    
+    heroData: [],
+    selectedCard: null,
+    selectedCardData: null,
 }
 let turnbtn = document.getElementById('turn-btn');
 let turn = true;
-
 function randomCard(hero, myCard) {
     if (hero) {
         this.atk = Math.ceil(Math.random() * 5);
         this.hp = Math.ceil(Math.random() * 5 + 25);
         this.hero = true;
+        this.field = true;
+    } else if (hero && myCard) {
+        this.atk = Math.ceil(Math.random() * 5);
+        this.hp = Math.ceil(Math.random() * 5 + 25);
+        this.hero = true;
+        this.field = true;
+        this.mine = true;
     } else {
         this.atk = Math.ceil(Math.random() * 5);
         this.hp = Math.ceil(Math.random() * 5);
@@ -37,56 +46,91 @@ function randomCard(hero, myCard) {
 function cardFactory(hero, myCard) {
     return new randomCard(hero, myCard);
 }
-function deckToField() {
-    
+function deckToField(data, myTurn) {   // 싹다지우고 새로 생성하다보니 의도치 않게 턴오버 클래스가 지워진다. 
+    let obj = myTurn ? my : rival;     // 턴오버 클래스에 대한 자료를 생성해주거나 지워지지 않게 예외처리 해야될듯하다.
+    let idx = obj.deckData.indexOf(data);
+    obj.deckData.splice(idx, 1);
+    obj.fieldData.push(data);
+    cardDomLink(data, obj.field);
+    obj.deck.innerHTML = '';
+    obj.field.innerHTML = '';
+    obj.fieldData.forEach(function (data) {
+        cardDomLink(data, obj.field);
+        data.field = true;
+    });
+    obj.deckData.forEach(function (data) {
+        cardDomLink(data, obj.deck);
+        data.field = false;
+    });
+    let currentCost = Number(obj.cost.textContent);
+    obj.cost.textContent = currentCost - data.cost;    
+}
+function resetScreen(myTurn) {
+    let obj = myTurn ? rival : my;
+    obj.field.innerHTML = '';
+    obj.hero.innerHTML = '';
+    obj.fieldData.forEach(function (data) {
+        cardDomLink(data, obj.field);
+    });
+    cardDomLink(obj.heroData, obj.hero, true);
 }
 function cardDomLink(data, dom, hero) {
     let card = document.querySelector('.card-hidden .card').cloneNode(true);
     card.querySelector('.card-cost').textContent = data.cost;
     card.querySelector('.card-atk').textContent = data.atk;
-    card.querySelector('.card-hp').textContent = data.hp; 
+    card.querySelector('.card-hp').textContent = data.hp;
     if (hero) {
         card.querySelector('.card-cost').style.display = 'none';
         let name = document.createElement('div');
         name.textContent = 'Hero';
-        card.appendChild(name);        
+        card.appendChild(name);
     }
-    card.addEventListener('click', function(card) {
+    card.addEventListener('click', function () {
         let myCurrentcost = Number(my.cost.textContent);
         let rivalCurrentcost = Number(rival.cost.textContent);
-        if (turn && data.mine && !data.hero && myCurrentcost >= data.cost && !data.field) {           
-            let idx = my.deckData.indexOf(data);
-            my.deckData.splice(idx, 1);
-            my.fieldData.push(data);
-            cardDomLink(data, my.field);
-            my.deck.innerHTML = '';
-            my.field.innerHTML = '';
-            my.fieldData.forEach(function(data) {
-                cardDomLink(data, my.field);                    
-            });
-            my.deckData.forEach(function(data) {
-                cardDomLink(data, my.deck);                    
-            });
-            data.field = true;
-            my.cost.textContent = myCurrentcost - data.cost;   
-        } else if (!turn && !data.mine && !data.hero && rivalCurrentcost >= data.cost && !data.field){ 
-            let idx = rival.deckData.indexOf(data);
-            rival.deckData.splice(idx, 1);
-            rival.fieldData.push(data);
-            cardDomLink(data, rival.field);  
-            rival.deck.innerHTML = '';
-            rival.field.innerHTML = '';
-            rival.fieldData.forEach(function(data) {
-                cardDomLink(data, rival.field);                    
-            });
-            rival.deckData.forEach(function(data) {
-                cardDomLink(data, rival.deck);                    
-            });
-            data.field = true;
-            rival.cost.textContent = rivalCurrentcost - data.cost;
+        if (turn) {            
+            if (data.field && !data.mine && my.selectedCard && !card.classList.contains('card-turnover')) { //활성화된 카드로 공격대상 선정
+                data.hp = data.hp - my.selectedCardData.atk;
+                my.selectedCard.classList.remove('card-selected')
+                my.selectedCard.classList.add('card-turnover')
+                my.selectedCard = null;
+                my.selectedCardData = null;                
+                resetScreen(true);
+                return;
+            }
+            if (data.field && data.mine && !card.classList.contains('card-turnover')) { //필드에 있는 턴오버되지않은 카드 선택해서 활성화
+                document.querySelectorAll('.card').forEach(function (card) {
+                    card.classList.remove('card-selected');
+                });                
+                card.classList.add('card-selected');
+                my.selectedCardData = data;
+                my.selectedCard = card;
+            } else if (data.mine && !data.hero && myCurrentcost >= data.cost && !card.classList.contains('card-turnover')) {  //덱에서 필드로 카드 선택          
+                deckToField(data, true);
+            } 
+        } else {
+            if (data.field && data.mine && rival.selectedCard && !card.classList.contains('card-turnover')) {
+                data.hp = data.hp - rival.selectedCardData.atk;
+                rival.selectedCard.classList.remove('card-selected')
+                rival.selectedCard.classList.add('card-turnover')
+                rival.selectedCard = null;
+                rival.selectedCardData = null;                
+                resetScreen(false);
+                return;
+            }
+            if (data.field && !data.mine && !card.classList.contains('card-turnover')) {
+                document.querySelectorAll('.card').forEach(function (card) {
+                    card.classList.remove('card-selected');
+                });
+                card.classList.add('card-selected');
+                rival.selectedCardData = data;
+                rival.selectedCard = card;
+            } else if (!data.mine && !data.hero && rivalCurrentcost >= data.cost && !card.classList.contains('card-turnover')) {
+                deckToField(data, false);
+            }
         }
-    }); 
-    dom.appendChild(card);  
+    });
+    dom.appendChild(card);
 }
 function createRivaldeck(N) {
     for (i = 0; i < N; i++) {
@@ -107,11 +151,11 @@ function createMydeck(N) {
     });
 }
 function createRivalHero() {
-    rival.heroData = cardFactory(true);  
+    rival.heroData = cardFactory(true);
     cardDomLink(rival.heroData, rival.hero, true);
 }
 function createMyHero() {
-    my.heroData = cardFactory(true);
+    my.heroData = cardFactory(true, true);
     cardDomLink(my.heroData, my.hero, true)
 }
 function setting() {
@@ -120,22 +164,23 @@ function setting() {
     createMyHero();
     createRivalHero();
 }
-
 setting();
-
-turnbtn.addEventListener('click', function(){
+turnbtn.addEventListener('click', function () {
     turn = !turn;
     if (turn) {
         my.cost.textContent = 10;
-        let supply = 5 - rival.deckData.length;
-        createRivaldeck(supply)
-    } else {
-        rival.cost.textContent = 10;
         let supply = 5 - my.deckData.length;
         createMydeck(supply)
-
+    } else {
+        rival.cost.textContent = 10;
+        let supply = 5 - rival.deckData.length;
+        createRivaldeck(supply)
     }
     document.getElementById('rival').classList.toggle('turn');
     document.getElementById('my').classList.toggle('turn');
+    document.querySelectorAll('.card').forEach(function (card) {
+        card.classList.remove('card-selected');
+        card.classList.remove('card-turnover');
+    });
 });
 
