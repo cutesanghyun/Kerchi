@@ -27,7 +27,7 @@ function createRandNumber() {
         });
     });
     let randomTd = emptyList[Math.floor(Math.random() * emptyList.length)];
-    data[randomTd[0]][randomTd[1]] = 2;
+    data[randomTd[0]][randomTd[1]] = Math.floor((Math.random()*2+1))*2
     Draw();
 }
 function Draw() {
@@ -96,7 +96,7 @@ window.addEventListener('mouseup', function (event) {
             data.forEach(function (horData, i) {
                 horData.forEach(function (verData, j) {
                     if (verData) {
-                        newData[i].push(verData)
+                        newData[i].unshift(verData)
                     }
                 });
             });
@@ -124,7 +124,7 @@ window.addEventListener('mouseup', function (event) {
             data.forEach(function (horData, i) {
                 horData.forEach(function (verData, j) {
                     if (verData) {
-                        newData[j].push(verData)
+                        newData[j].unshift(verData)
                     }
                 });
             });
@@ -135,6 +135,6 @@ window.addEventListener('mouseup', function (event) {
             });
             break;
     }
-    // createRandNumber();
-    Draw();
+    createRandNumber();
+    
 })
