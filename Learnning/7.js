@@ -78,6 +78,16 @@ let wordbook = {
     mutiny: '반란,폭동,항망',
     prevail: '만연하다,이기다,팽배하다,우세하다,설득하다',
     condolence: '애도,조의', 
+    fart: '방귀,방귀뀌다,시원찮은놈',
+    foray: '약탈,약탈하다,급습하다',
+    quiver: '떨리다,흔들리다',
+    condemn: '비난하다,규탄하다,유죄판결을내리다',
+    waddle: '건들거리면서나아가다,어기적걷다',
+    compel: '매력적인,강요하다,압도적인,~하게하다',
+    unsullied: '결백한,오점이없는',
+    infidel: '이교도,신앙심이없는',
+    rigorous: '혹독한,엄격한,철저한,정밀한',
+    mutilate: '훼손,절단,흉악',
 }
 
 let wordbook2 = {   

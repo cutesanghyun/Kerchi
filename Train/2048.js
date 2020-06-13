@@ -1,6 +1,6 @@
 let table = document.querySelector('#table')
 let data = [];
-
+let score = document.querySelector('#score')
 function reset() {
     let fragment = document.createDocumentFragment();
     [1, 2, 3, 4].forEach(function () {
@@ -16,20 +16,6 @@ function reset() {
     });
     table.appendChild(fragment);
 }
-
-function createRandNumber() {
-    let emptyList = [];
-    data.forEach(function (horData, i) {
-        horData.forEach(function (verData, j) {
-            if (!verData) {
-                emptyList.push([i, j]);
-            }
-        });
-    });
-    let randomTd = emptyList[Math.floor(Math.random() * emptyList.length)];
-    data[randomTd[0]][randomTd[1]] = Math.floor((Math.random()*2+1))*2
-    Draw();
-}
 function Draw() {
     data.forEach(function (horData, i) {
         horData.forEach(function (verData, j) {
@@ -41,10 +27,30 @@ function Draw() {
         });
     });
 }
+function createRandNumber() {
+    let emptyList = [];
+    data.forEach(function (horData, i) {
+        horData.forEach(function (verData, j) {
+            if (!verData) {
+                emptyList.push([i, j]);
+            }
+        });
+    });
+    if (emptyList.length === 0) {
+        alert('Game over' + score.textContent);
+        table.innerHTML = '';
+        score.innerHTML = '';
+        reset();
+    } else {
+        let randomTd = emptyList[Math.floor(Math.random() * emptyList.length)];
+        data[randomTd[0]][randomTd[1]] = Math.floor((Math.random() * 2 + 1)) * 2
+    }
+    Draw();
+}
+
 
 reset();
 createRandNumber();
-Draw();
 
 let startDrag = false;
 let dragging = false;
@@ -81,8 +87,14 @@ window.addEventListener('mouseup', function (event) {
         case 'left':
             data.forEach(function (horData, i) {
                 horData.forEach(function (verData, j) {
-                    if (verData) {                        
-                        newData[i].push(verData)
+                    if (verData) {
+                        if (newData[i][newData[i].length - 1] && newData[i][newData[i].length - 1] === verData) {
+                            newData[i][newData[i].length - 1] *= 2;
+                            let currentScore = parseInt(score.textContent, 10);
+                            score.textContent = currentScore + parseInt(newData[i][newData[i].length - 1]);
+                        } else {
+                            newData[i].push(verData);
+                        }
                     }
                 });
             });
@@ -96,13 +108,19 @@ window.addEventListener('mouseup', function (event) {
             data.forEach(function (horData, i) {
                 horData.forEach(function (verData, j) {
                     if (verData) {
-                        newData[i].unshift(verData)
+                        if (newData[i][0] && newData[i][0] === verData) {
+                            newData[i][0] *= 2;
+                            let currentScore = parseInt(score.textContent, 10);
+                            score.textContent = currentScore + parseInt(newData[i][0]);
+                        } else {
+                            newData[i].unshift(verData)
+                        }
                     }
                 });
             });
             [1, 2, 3, 4].forEach(function (horData, i) {
                 [1, 2, 3, 4].forEach(function (verData, j) {
-                    data[i][3-j] = newData[i][j] || 0;
+                    data[i][3 - j] = newData[i][j] || 0;
                 });
             });
             break;
@@ -110,7 +128,13 @@ window.addEventListener('mouseup', function (event) {
             data.forEach(function (horData, i) {
                 horData.forEach(function (verData, j) {
                     if (verData) {
-                        newData[j].push(verData)
+                        if (newData[j][newData[j].length - 1] && newData[j][newData[j].length - 1] === verData) {
+                            newData[j][newData[j].length - 1] *= 2;
+                            let currentScore = parseInt(score.textContent, 10);
+                            score.textContent = currentScore + parseInt(newData[j][newData[j].length - 1]);
+                        } else {
+                            newData[j].push(verData)
+                        }
                     }
                 });
             });
@@ -124,7 +148,13 @@ window.addEventListener('mouseup', function (event) {
             data.forEach(function (horData, i) {
                 horData.forEach(function (verData, j) {
                     if (verData) {
-                        newData[j].unshift(verData)
+                        if (newData[j][0] && newData[j][0] === verData) {
+                            newData[j][0] *= 2;
+                            let currentScore = parseInt(score.textContent, 10);
+                            score.textContent = currentScore + parseInt(newData[j][0]);
+                        } else {
+                            newData[j].unshift(verData)
+                        }
                     }
                 });
             });
@@ -136,5 +166,5 @@ window.addEventListener('mouseup', function (event) {
             break;
     }
     createRandNumber();
-    
+
 })
