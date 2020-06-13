@@ -80,6 +80,10 @@ let wordbook = {
     disdain: '경멸하다,경멸',
     breach: '위반,침해,어기다,무너지다,누출',
     suckle: '키우다,젖을먹이다',
+    dissention: '불화,의견충돌',
+    mutiny: '반란,폭동,항망',
+    prevail: '만연하다,이기다,팽배하다,우세하다,설득하다',
+    condolence: '애도,조의', 
 }
 
 let wordbook2 = {   

@@ -47,7 +47,7 @@ function cardFactory(hero, myCard) {
     return new randomCard(hero, myCard);
 }
 function deckToField(data, myTurn) {   // 싹다지우고 새로 생성하다보니 의도치 않게 턴오버 클래스가 지워진다. 
-    let obj = myTurn ? my : rival;     // 턴오버 클래스에 대한 자료를 생성해주거나 지워지지 않게 예외처리 해야될듯하다.
+    let obj = myTurn ? my : rival;     // 턴오버 클래스에 대한 데이터를 생성해주거나 지워지지 않게 예외처리 해야될듯하다.
     let idx = obj.deckData.indexOf(data);
     obj.deckData.splice(idx, 1);
     obj.fieldData.push(data);
@@ -63,7 +63,7 @@ function deckToField(data, myTurn) {   // 싹다지우고 새로 생성하다보
         data.field = false;
     });
     let currentCost = Number(obj.cost.textContent);
-    obj.cost.textContent = currentCost - data.cost;    
+    obj.cost.textContent = currentCost - data.cost;
 }
 function resetScreen(myTurn) {
     let obj = myTurn ? rival : my;
@@ -73,6 +73,36 @@ function resetScreen(myTurn) {
         cardDomLink(data, obj.field);
     });
     cardDomLink(obj.heroData, obj.hero, true);
+}
+function battle(data, myTurn) {
+    let obj = myTurn ? my : rival;
+    let obj2 = myTurn ? rival : my;
+    data.hp = data.hp - obj.selectedCardData.atk;
+    if (data.hp <= 0) {
+        let inx = obj2.fieldData.indexOf(data);
+        if (inx > -1) {
+            obj2.fieldData.splice(inx, 1);
+        } else {
+            alert('Victory')
+            setting();
+            return;
+        }
+    }
+    obj.selectedCard.classList.remove('card-selected')
+    obj.selectedCard.classList.add('card-turnover')
+    obj.selectedCard = null;
+    obj.selectedCardData = null;
+    resetScreen(myTurn);
+    return;
+}
+function readyForBattle(card, data, myTurn) {
+    let obj = myTurn ? my : rival;
+    document.querySelectorAll('.card').forEach(function (card) {
+        card.classList.remove('card-selected');
+    });
+    card.classList.add('card-selected');
+    obj.selectedCardData = data;
+    obj.selectedCard = card;
 }
 function cardDomLink(data, dom, hero) {
     let card = document.querySelector('.card-hidden .card').cloneNode(true);
@@ -88,44 +118,23 @@ function cardDomLink(data, dom, hero) {
     card.addEventListener('click', function () {
         let myCurrentcost = Number(my.cost.textContent);
         let rivalCurrentcost = Number(rival.cost.textContent);
-        if (turn) {            
-            if (data.field && !data.mine && my.selectedCard && !card.classList.contains('card-turnover')) { //활성화된 카드로 공격대상 선정
-                data.hp = data.hp - my.selectedCardData.atk;
-                my.selectedCard.classList.remove('card-selected')
-                my.selectedCard.classList.add('card-turnover')
-                my.selectedCard = null;
-                my.selectedCardData = null;                
-                resetScreen(true);
-                return;
+        let availableCard = !card.classList.contains('card-turnover')
+        if (turn) {
+            if (data.field && !data.mine && my.selectedCard) { //활성화된 카드로 공격대상 선정
+                battle(data, true);
             }
-            if (data.field && data.mine && !card.classList.contains('card-turnover')) { //필드에 있는 턴오버되지않은 카드 선택해서 활성화
-                document.querySelectorAll('.card').forEach(function (card) {
-                    card.classList.remove('card-selected');
-                });                
-                card.classList.add('card-selected');
-                my.selectedCardData = data;
-                my.selectedCard = card;
-            } else if (data.mine && !data.hero && myCurrentcost >= data.cost && !card.classList.contains('card-turnover')) {  //덱에서 필드로 카드 선택          
+            if (data.field && data.mine && availableCard) { //필드에 있는 턴오버되지않은 카드 선택해서 활성화
+                readyForBattle(card, data, true);
+            } else if (data.mine && !data.hero && myCurrentcost >= data.cost) {  //덱에서 필드로 카드 선택          
                 deckToField(data, true);
-            } 
-        } else {
-            if (data.field && data.mine && rival.selectedCard && !card.classList.contains('card-turnover')) {
-                data.hp = data.hp - rival.selectedCardData.atk;
-                rival.selectedCard.classList.remove('card-selected')
-                rival.selectedCard.classList.add('card-turnover')
-                rival.selectedCard = null;
-                rival.selectedCardData = null;                
-                resetScreen(false);
-                return;
             }
-            if (data.field && !data.mine && !card.classList.contains('card-turnover')) {
-                document.querySelectorAll('.card').forEach(function (card) {
-                    card.classList.remove('card-selected');
-                });
-                card.classList.add('card-selected');
-                rival.selectedCardData = data;
-                rival.selectedCard = card;
-            } else if (!data.mine && !data.hero && rivalCurrentcost >= data.cost && !card.classList.contains('card-turnover')) {
+        } else {
+            if (data.field && data.mine && rival.selectedCard) {
+                battle(data, false);
+            }
+            if (data.field && !data.mine && availableCard) {
+                readyForBattle(card, data, false);
+            } else if (!data.mine && !data.hero && rivalCurrentcost >= data.cost) {
                 deckToField(data, false);
             }
         }
@@ -159,10 +168,19 @@ function createMyHero() {
     cardDomLink(my.heroData, my.hero, true)
 }
 function setting() {
+    [rival, my].forEach(function (item) {
+        item.deckData = [];
+        item.heroData = [];
+        item.fieldData = [];
+        item.selectedCard = [];
+        item.selectedCardData = [];
+    });
     createRivaldeck(5);
     createMydeck(5);
     createMyHero();
     createRivalHero();
+    resetScreen(true);
+    resetScreen(false);
 }
 setting();
 turnbtn.addEventListener('click', function () {

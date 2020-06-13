@@ -25,9 +25,9 @@ function createRandNumber() {
                 emptyList.push([i, j]);
             }
         });
-    });    
-    let randomTd = emptyList[Math.floor(Math.random() * emptyList.length)];    
-    data[randomTd[0]][randomTd[1]] = Math.floor(Math.random()*10);
+    });
+    let randomTd = emptyList[Math.floor(Math.random() * emptyList.length)];
+    data[randomTd[0]][randomTd[1]] = 2;
     Draw();
 }
 function Draw() {
@@ -82,7 +82,20 @@ window.addEventListener('mouseup', function (event) {
         case 'right':
 
         case 'up':
-
+            let newData = [[], [], [], []]
+            data.forEach(function (horData, i) {
+                horData.forEach(function (verData, j) {
+                    if (verData) {
+                        newData[j].push(verData)
+                    }
+                });
+            });;
+            [1, 2, 3, 4].forEach(function (verData, i) {
+                [1, 2, 3, 4].forEach(function (horData, j) {
+                    data[j][i] = newData[i][j] || 0;
+                });
+            });
+            break;
         case 'down':
     }
     createRandNumber();

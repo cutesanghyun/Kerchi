@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href='../style.css'>
     <style>
         #table {
             border-collapse: collapse;
             user-select: none;
         }
+
         #table td {
             border: 1px solid black;
             width: 100px;
@@ -22,9 +24,17 @@
 </head>
 
 <body>
+    <h1>습작품</h1>
+    <div id='goHome'><a href="../index.html" title="메인항목으로 이동">메인 페이지로</a></div>
+    <div id="lists">
+        <script src="./lists.js"></script>
+    </div>
     <table id="table"></table>
     <div id="score"></div>
     <script src="./2048.js"></script>
+    <div id="bottomBlank">©2020 Kerchi
+    </div>
+
 </body>
 
 </html>

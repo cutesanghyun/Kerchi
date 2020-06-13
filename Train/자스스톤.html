@@ -96,6 +96,9 @@
             background-color: gray;
         }
 
+        #costText{
+            text-align: center;
+        }
     </style>
     <title>Atelier</title>
 </head>
@@ -108,24 +111,24 @@
     </div>
     <h4>자스스톤(하스스톤 모방)</h4>
     <div id="rival">
+        <div id="costText">코스트: <span id="rival-cost">10</span>/<span>10</span></div>
         <div id="rival-deck">
         </div>
-        <div id="rival-hero">
-            <div>코스트: <span id="rival-cost">10</span>/<span>10</span></div>
+        <div id="rival-hero">            
         </div>
         <div id="rival-cards" style="height: 110px">
         </div>
     </div>
     <hr />
     <button id='turn-btn'>턴넘기기</button>
-    <div id="my" class="turn">
+    <div id="my" class="turn">        
         <div id="my-cards" style="height: 110px">
         </div>
-        <div id="my-hero">
-            <div>코스트: <span id="my-cost">10</span>/<span>10</span></div>
+        <div id="my-hero">            
         </div>
         <div id="my-deck">
         </div>
+        <div id="costText">코스트: <span id="my-cost">10</span>/<span>10</span></div>
     </div>
     <div class="card-hidden" style="display: none;">
         <div class="card">
