@@ -76,27 +76,65 @@ window.addEventListener('mouseup', function (event) {
     }
     startDrag = false;
     dragging = false;
+    let newData = [[], [], [], []];
     switch (direction) {
         case 'left':
-
+            data.forEach(function (horData, i) {
+                horData.forEach(function (verData, j) {
+                    if (verData) {                        
+                        newData[i].push(verData)
+                    }
+                });
+            });
+            [1, 2, 3, 4].forEach(function (horData, i) {
+                [1, 2, 3, 4].forEach(function (verData, j) {
+                    data[i][j] = newData[i][j] || 0;
+                });
+            });
+            break;
         case 'right':
-
+            data.forEach(function (horData, i) {
+                horData.forEach(function (verData, j) {
+                    if (verData) {
+                        newData[i].push(verData)
+                    }
+                });
+            });
+            [1, 2, 3, 4].forEach(function (horData, i) {
+                [1, 2, 3, 4].forEach(function (verData, j) {
+                    data[i][3-j] = newData[i][j] || 0;
+                });
+            });
+            break;
         case 'up':
-            let newData = [[], [], [], []]
             data.forEach(function (horData, i) {
                 horData.forEach(function (verData, j) {
                     if (verData) {
                         newData[j].push(verData)
                     }
                 });
-            });;
-            [1, 2, 3, 4].forEach(function (verData, i) {
-                [1, 2, 3, 4].forEach(function (horData, j) {
-                    data[j][i] = newData[i][j] || 0;
+            });
+            [1, 2, 3, 4].forEach(function (horData, i) {
+                [1, 2, 3, 4].forEach(function (verData, j) {
+                    data[i][j] = newData[j][i] || 0;
                 });
             });
             break;
         case 'down':
+            data.forEach(function (horData, i) {
+                horData.forEach(function (verData, j) {
+                    if (verData) {
+                        newData[j].push(verData)
+                    }
+                });
+            });
+            [1, 2, 3, 4].forEach(function (horData, i) {
+                [1, 2, 3, 4].forEach(function (verData, j) {
+                    data[3 - i][j] = newData[j][i] || 0;
+                });
+            });
+            break;
     }
-    createRandNumber();
+    // createRandNumber();
+    Draw();
 })
