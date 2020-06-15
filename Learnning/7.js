@@ -88,6 +88,21 @@ let wordbook = {
     infidel: '이교도,신앙심이없는',
     rigorous: '혹독한,엄격한,철저한,정밀한',
     mutilate: '훼손,절단,흉악',
+    dour: '완고한,엄한,뚱한',
+    proclivity: '성향,기질,경향',
+    fundamental: '근본적인,핵심적인,기본원칙,핵심',
+    concatenation: '(사물,사건의)연속',
+    template: '형판,견본',
+    notion: '개념,생각',
+    mistreat: '학대하다,차별,오용',  
+    whimper: '흐느껴울다,낑낑거리다',
+    minstrel: '음유시인,시인,음악가',
+    idle: '게으른,나태한,빈둥거리는,헛되이보내다',   
+    sobriety: '절주,근엄,절제',
+    tedious: '지루한,장황한',
+    apprentice: '견습생,도제',
+    subdue: '가라앉히다,제압하다,억제하다,완화하다', 
+    quandary: '곤혹,궁지,난처한입장',
 }
 
 let wordbook2 = {   

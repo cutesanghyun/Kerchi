@@ -71,7 +71,9 @@ window.addEventListener('mouseup', function (event) {
     let direction;
     let gapX = endPosition[0] - startPosion[0]; // 왼쪽이 마이너스 오른쪽이 플러스
     let gapY = endPosition[1] - startPosion[1]; // 위쪽이 마이너스 아래쪽이 플러스
-    if (gapX < 0 && Math.abs(gapX) / Math.abs(gapY) > 1) {     //오 아, 아 왼, 왼 위, 위 오
+    if (gapX < 1 && gapY < 1) {
+        return;
+    } else if (gapX < 0 && Math.abs(gapX) / Math.abs(gapY) > 1) {     //오 아, 아 왼, 왼 위, 위 오
         direction = 'left';
     } else if (gapX > 0 && Math.abs(gapX) / Math.abs(gapY) > 1) {
         direction = 'right';
@@ -83,6 +85,8 @@ window.addEventListener('mouseup', function (event) {
     startDrag = false;
     dragging = false;
     let newData = [[], [], [], []];
+    let flagNum = false;
+    let flagDone = false;
     switch (direction) {
         case 'left':
             data.forEach(function (horData, i) {
@@ -108,17 +112,31 @@ window.addEventListener('mouseup', function (event) {
             data.forEach(function (horData, i) {
                 horData.forEach(function (verData, j) {
                     if (verData) {
-                        if (newData[i][0] && newData[i][0] === verData) {
+                        if (flagNum && !flagDone) {                                               // 빈 배열 newData 새롭게 생성
+                            console.log(Number(newData[i][0] / 2), Number(verData))
+                            if (newData[i][0] && Number(newData[i][0] / 2) === Number(verData)) {
+                                newData[i].push(verData)
+                            } else {
+                                newData[i].unshift(verData)
+                            }
+                            flagNum = false;
+                            flagDone = true;
+                        } else if (newData[i][0] && newData[i][0] === verData && !flagNum && !flagDone) {
                             newData[i][0] *= 2;
+                            flagNum = true;
                             let currentScore = parseInt(score.textContent, 10);
                             score.textContent = currentScore + parseInt(newData[i][0]);
-                        } else {
+                        } else if (!flagNum) {
                             newData[i].unshift(verData)
+                            flagNum = false;
+                            flagDone = false;
                         }
                     }
                 });
             });
-            [1, 2, 3, 4].forEach(function (horData, i) {
+            flagNum = false;
+            flagDone = false;
+            [1, 2, 3, 4].forEach(function (horData, i) {                           //생성된 newData 배열을 토대로 data재구성
                 [1, 2, 3, 4].forEach(function (verData, j) {
                     data[i][3 - j] = newData[i][j] || 0;
                 });
@@ -166,5 +184,4 @@ window.addEventListener('mouseup', function (event) {
             break;
     }
     createRandNumber();
-
 })
