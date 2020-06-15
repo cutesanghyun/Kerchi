@@ -3,10 +3,10 @@ let makeH2 = document.createElement('h2')
 selectLists.append(makeH2)
 
 const 목록 = [
-  '계산기',
-  '끝말잊기',
   '네이버모방',
-  '구구단',
+  '구구단',  
+  '끝말잊기',
+  '계산기',
   '숫자야구',
   '틱택토',
   '로또번호추첨',

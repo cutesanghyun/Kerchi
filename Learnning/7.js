@@ -1,26 +1,12 @@
 let wordbook = {
-    prudent: '신중한,빈틈없는',     
-    distinctive: '독특한,특유의,뛰어난',
-    rave: '극찬,격찬,열광,호평,화내는',    
     slog: '강타하다,고생하며나아가다,공들여서하다',
-    linger: '지속되다,남아있다,서성대다,그림자를드리우다',
-    ingrate: '배은망덕한사람,은혜를모르는',
-    stutter: '더듬거리며말하다',
-    ripost: '재빠른응수',
-    plead: '애원하다,간청하다,주장하다,항변하다',
     reprieve: '형집행을유예하다,유예,일시적경감',
     grubby: '더러운,게으른,지저분한',    
     swell: '붓다,늘어나다',
-    twig: '(잎이없는)가지,지맥,분기,깨닫다',
     vein: '정맥,기질,성향',    
     respite: '휴식,연기',
-    ponderous: '크고무거운,다루기힘든',
-    demented: '머리가 돈, 실성한',
     discreetly: '신중히,조심스럽게',
     strut: '뽐내며걷다,지주,버팀목',
-    snivel: '콧물,콧물을흘리다,코를훌쩍이다', 
-    manure: '거름,비료,~에비료를주다', 
-    nippy: '살을에듯추운,신랄한',
     vigil: '철야,밤을샌,농성하기',
     imbecile: '바보,얼간이',
     inclination: '성향,의향',
@@ -29,11 +15,8 @@ let wordbook = {
     vile: '비열한,몹시나쁜,지독한',    
     flog: '팔아치우다,훔치다,채찍질하여나아가게하다',
     attaint: '사권박탈,사권을 박탈하다',
-    impunity: '무사,형벌을면하기',
     pose: '제기하다,주장하다,야기하다',
     impudent: '뻔뻔한,건방진',
-    exclusive: '모순되는,독점적인,전용,단독적',
-    reel: '비틀거리다,휘청거리다',
     urge: '촉구하다,요구하다,주장하다',  
     confine: '가두다,제한하다',
     demise: '서거,사망,양도하다',  
@@ -43,10 +26,8 @@ let wordbook = {
     scruple:'양심의가책,망설임,미량',
     levy: '부과하다,징수하다,징수',
     detrimental: '해로운,불리한',
-    sore: '염증,상처,아픈,화난',
     liege: '주군,신종의의무가있는',
     pledge: '약속하다,맹세하다',
-    matrimony: '결혼식,혼례',
     meddling: '간섭,참견하는',  
     grudge: '원한,뒤끝',
     encumbrance: '장애물,귀찮은것',  
@@ -64,7 +45,6 @@ let wordbook = {
     fornicate: '아치형의,활모양의,사통하다',
     incest: '근친상간',
     prance: '활보,의기양양하게걷다',
-    fetch: '낙찰되다,가져옴,데려옴',
     allegiance: '충성,충실',
     affliction: '고통,불행,고뇌',
     poverty: '빈곤,가난',
@@ -75,10 +55,9 @@ let wordbook = {
     breach: '위반,침해,어기다,무너지다,누출',
     suckle: '키우다,젖을먹이다',
     dissention: '불화,의견충돌',
-    mutiny: '반란,폭동,항망',
+    mutiny: '반란,폭동,항명',
     prevail: '만연하다,이기다,팽배하다,우세하다,설득하다',
     condolence: '애도,조의', 
-    fart: '방귀,방귀뀌다,시원찮은놈',
     foray: '약탈,약탈하다,급습하다',
     quiver: '떨리다,흔들리다',
     condemn: '비난하다,규탄하다,유죄판결을내리다',
@@ -105,7 +84,28 @@ let wordbook = {
     quandary: '곤혹,궁지,난처한입장',
 }
 
-let wordbook2 = {   
+let wordbook2 = {  
+    fart: '방귀,방귀뀌다,시원찮은놈',
+    fetch: '낙찰되다,가져옴,데려옴',
+    matrimony: '결혼식,혼례',
+    sore: '염증,상처,아픈,화난',
+    exclusive: '모순되는,독점적인,전용,단독적',
+    reel: '비틀거리다,휘청거리다',
+    impunity: '무사,형벌을면하기',
+    snivel: '콧물,콧물을흘리다,코를훌쩍이다', 
+    manure: '거름,비료,~에비료를주다', 
+    nippy: '살을에듯추운,신랄한',
+    ponderous: '크고무거운,다루기힘든',
+    demented: '머리가 돈, 실성한',
+    twig: '(잎이없는)가지,지맥,분기,깨닫다',
+    ripost: '재빠른응수',
+    plead: '애원하다,간청하다,주장하다,항변하다',
+    linger: '지속되다,남아있다,서성대다,그림자를드리우다',
+    ingrate: '배은망덕한사람,은혜를모르는',
+    stutter: '더듬거리며말하다',
+    prudent: '신중한,빈틈없는',     
+    distinctive: '독특한,특유의,뛰어난',
+    rave: '극찬,격찬,열광,호평,화내는',     
     unfounded: '근거가없는',
     crawl: '기어가다', 
     specimen: '표본,견본',
@@ -206,29 +206,36 @@ let wordbook2 = {
     sigil: '도장, 신비한 표지(상징 같은 의미인듯?)',  
     privy: '숨은,비밀의',
     protract: '~을연장하다,질질끌다', 
-    stale: '딱딱해진,상한,진부한,김빠진',    
-       
+    stale: '딱딱해진,상한,진부한,김빠진',  
 }
 
-
+let wbLength = document.querySelector('#wbLength')
 let valueOfAll = Object.keys(wordbook);
-let wordBookLength = valueOfAll.length
-
+let wordBookLength = valueOfAll.length;
+let valueOfAll2 = Object.keys(wordbook2);
+let wordBookLength2 = valueOfAll2.length;
+wbLength.textContent = '현재 단어: '+ (wordBookLength + 1) + '개 (익힌 단어: ' + wordBookLength2 + '개)';
 for (i = 0; i < wordBookLength; i++) {
     let showWord = document.querySelector('#showbox')
     let addDiv = document.createElement('div')
     addDiv.setAttribute('id', `minishowbox${i}`)
-    showWord.append(addDiv)
+    addDiv.style.width = '500px';
+    addDiv.style.display = 'inline-block';    
+    showWord.append(addDiv);    
 
-    let miniShowbox = document.querySelector(`#minishowbox${i}`)
-    let keySelect = Object.keys(wordbook)[i]
-    miniShowbox.append(keySelect, ' ')
+    let miniShowbox = document.querySelector(`#minishowbox${i}`);
+    let keySelect = Object.keys(wordbook)[i];
+    miniShowbox.append(keySelect, ' ');
 
-    let addButton = document.createElement('button')
-    addButton.setAttribute('class', 'btn')
-    addButton.setAttribute('id', `showmean${i}`)
-    addButton.append(document.createTextNode('확인'))
-    miniShowbox.append(addButton, ' ')
+    let addButton = document.createElement('button');    
+    addButton.setAttribute('id', `showmean${i}`);
+    addButton.append(document.createTextNode('확인'));
+    miniShowbox.append(addButton, ' ');
+
+    // let addBtn = document.createElement('button');
+    // addBtn.setAttribute('id', `remove${i}`);
+    // addBtn.textContent = '제거'
+    // showWord.append(addBtn);
     
     addButton.addEventListener('click', () => {
         let n = addButton.id.substring(8);
@@ -236,4 +243,9 @@ for (i = 0; i < wordBookLength; i++) {
         let value = wordbook[key];
         document.querySelector(`#minishowbox${n}`).append(`${value}`);
     });
+    // addBtn.addEventListener('click', () => {
+    //     let n = addBtn.id.substring(6);
+    //     let key = valueOfAll[n];
+    //     let value = wordbook[key];   
+    // });                          
 }

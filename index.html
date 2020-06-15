@@ -17,40 +17,56 @@
     <h2><a href=./Train/index.html>습작품</a></h2>
     <h2><a href=./PathOfExile/index.html>패스오브엑자일</a></h2>
   </div>
+  <h4>검색도구</h4>
+  <a href="https://www.google.com/search?sxsrf=ALeKk00XsuaQEQvYi-vUOKa98BjuOjc8Ag%3A1591430165875&ei=FUzbXv79NMrT-Qbf3bbABA&q=site%3Ahttps%3A%2F%2Fdeveloper.mozilla.org%2F+javascript+%28%29&oq=site%3Ahttps%3A%2F%2Fdeveloper.mozilla.org%2F+javascript+%28%29&gs_lcp=CgZwc3ktYWIQAzoCCAA6BQgAEMsBOgQIABAeOgYIABAHEB5Q1BFYrSRg7S1oAHAAeACAAYwBiAGnB5IBAzAuOJgBAKABAaABAqoBB2d3cy13aXo&sclient=psy-ab&ved=0ahUKEwi-3OKt2-zpAhXKad4KHd-uDUgQ4dUDCAw&uact=5"
+    target="_blank">자바스크립트 검색</a><br>
+  <a href="https://en.dict.naver.com/#/main" target="_blank">영어 사전</a>
+  <h4>먼 미래의 목표</h4>
+  <ul>
+    <li>닌자 사이트와 연동되는 시세차익표 작성</li>
+    <li>엑셀에 있는 자료 옮겨오고 전체적인 리뉴얼</li>
+  </ul>
+  <h4>비주얼 스튜디오 코드 단축키</h4>
   <div>
-    <h4>검색도구</h4>
-    <a href="https://www.google.com/search?sxsrf=ALeKk00XsuaQEQvYi-vUOKa98BjuOjc8Ag%3A1591430165875&ei=FUzbXv79NMrT-Qbf3bbABA&q=site%3Ahttps%3A%2F%2Fdeveloper.mozilla.org%2F+javascript+%28%29&oq=site%3Ahttps%3A%2F%2Fdeveloper.mozilla.org%2F+javascript+%28%29&gs_lcp=CgZwc3ktYWIQAzoCCAA6BQgAEMsBOgQIABAeOgYIABAHEB5Q1BFYrSRg7S1oAHAAeACAAYwBiAGnB5IBAzAuOJgBAKABAaABAqoBB2d3cy13aXo&sclient=psy-ab&ved=0ahUKEwi-3OKt2-zpAhXKad4KHd-uDUgQ4dUDCAw&uact=5"
-      target="_blank">자바스크립트 검색</a><br>
-    <a href="https://en.dict.naver.com/#/main" target="_blank">영어 사전</a>
-    <h4>비주얼 스튜디오 코드 단축키</h4>
-    <div>
-      <ul>
-        <li>컨트롤+쉬프트+k: 행 삭제</li>
-        <li>알트 누른채로 위아래: 행 이동</li>
-        <li>컨트롤+알트 누른채로 위아래: 다중선택</li>
-        <li>(단어선택후)컨트롤+d: 동일한 단어중 다음꺼 선택</li>
-        <li>(단어선택후)컨트롤+쉬프트+l: 동일한 모든 단어 선택</li>
-        <li>컨트롤+],[: 라인 들여쓰기,내쓰기</li>
-      </ul>
-    </div>
-    <h4>공사장</h4><br>
-    <span style="margin-top:50px;">
-      <input id=b type="text" placeholder="주소입력창">
-    </span>
-    <button id="click">전환</button>
-    <div id="myresult">
-    </div><br><br>
-    <script>
-      document.querySelector('#click').addEventListener('click', () => {
-        const a = document.querySelector('#b').value
-        if (a) {
-          document.querySelector('#myresult').textContent = '.\\ffmpeg -i "https://vod-secure.twitch.tv/' + a + '/chunked/index-dvr.m3u8" -bsf:a aac_adtstoasc -c copy twitch.mp4'
-        }
-        else {
-          document.querySelector('#myresult').textContent = '주소입력부터 해주세요.'
-        }
-      });
-    </script>
+    <ul>
+      <li>컨트롤+k, 컨트롤+0 : 전체접기</li>
+      <li>컨트롤+k, 컨트롤+j : 전체펴기</li>
+      <li>컨트롤+쉬프트+k: 행 삭제</li>
+      <li>알트 누른채로 위아래: 행 이동</li>
+      <li>컨트롤+알트 누른채로 위아래: 다중선택</li>
+      <li>(단어선택후)컨트롤+d: 동일한 단어중 다음꺼 선택</li>
+      <li>(단어선택후)컨트롤+쉬프트+l: 동일한 모든 단어 선택</li>
+      <li>컨트롤+],[: 라인 들여쓰기,내쓰기</li>
+    </ul>
+  </div>
+  <h4>연혁</h4>
+  <div style="font-size: 12px;">
+    2020년 6월 15일 - 자바스크립트 기초강좌 1차완강<br><br>
+    2020년 6월 11일 - 파이썬 기초강좌 1차완강<br><br>
+    2020년 5월 23일 - 파이썬 실습환경 조성<br><br>
+    2020년 5월 18일 - 트위치 주소변환 조정<br><br>
+    2020년 5월 16일 - 트위치 주소변환 만들어보기 목표 달성<br><br>
+    2020년 5월 15일 - 목차를 자바스크립트 파일로 추출해서 정리<br><br>
+    2020년 5월 14일 - 목차에 반복과 배열문 적용(처음으로 습득한 지식을 다른 부분에 활용한 사례)<br><br>
+    2020년 5월 10일 - 본격적 작업 시작<br><br>
+  </div>  
+  <span style="margin-top:50px;">
+    <input id=b type="text" placeholder="주소입력창">
+  </span>
+  <button id="click">전환</button>
+  <div id="myresult">
+  </div><br><br>
+  <script>
+    document.querySelector('#click').addEventListener('click', () => {
+      const a = document.querySelector('#b').value
+      if (a) {
+        document.querySelector('#myresult').textContent = '.\\ffmpeg -i "https://vod-secure.twitch.tv/' + a + '/chunked/index-dvr.m3u8" -bsf:a aac_adtstoasc -c copy twitch.mp4'
+      }
+      else {
+        document.querySelector('#myresult').textContent = '주소입력부터 해주세요.'
+      }
+    });
+  </script>
   </div>
   <div id="bottomBlank">©2020 Kerchi
   </div>
