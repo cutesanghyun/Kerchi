@@ -1,11 +1,8 @@
-let input = document.querySelector('#input');
-let result = document.querySelector('#result');
-let check = document.querySelector('#check')
+const input = document.querySelector('#input');
+const result = document.querySelector('#result');
+const check = document.querySelector('#check')
 let question = [];
-let strike = 0;
-let ball = 0;
 let count = 10;
-
 function reset() {
     count = 10;
     question = [];
@@ -13,46 +10,42 @@ function reset() {
     for (i = 0; i < 4; i++) {
         let ranNum = Math.floor(Math.random() * baseNum.length);
         question.push(baseNum.splice(ranNum, 1)[0]);
-        console.log(question);
     }
 }
-
 reset();
-
 check.addEventListener('click', () => {
-    let addDiv = document.createElement('div');
     if (input.value.length === 4) {
         if (count <= 0) {
-            addDiv.textContent = 'Game Over';
-            result.append(addDiv);            
-            setTimeout(function() {
+            answer = question.join('');
+            result.append(document.createTextNode(`Game Over, 정답은 ${answer} 이었습니다.`));
+            setTimeout(function () {
                 result.innerHTML = '';
                 reset();
-            }, 2500);
-        } else if (Number(input.value) === Number(question.join(''))) {
-            addDiv.textContent = '홈런';
-            result.append(addDiv);        
-            setTimeout(function() {
+            }, 5000);
+        } else if (input.value === question.join('')) {
+            result.append(document.createTextNode('홈런'));            
+            setTimeout(function () {
                 result.innerHTML = '';
                 reset();
             }, 2500);
         } else {
+            let strike = 0;
+            let ball = 0;
             for (i = 0; i < 4; i++) {
                 if (Number(input.value[i]) === question[i]) {
-                    strike = strike + 1;
+                    strike += 1;
                 } else if (Number(input.value[i]) !== question[i] && question.includes(Number(input.value[i]))) {
-                    ball = ball + 1;
+                    ball += 1;
                 }
             }
             count = count - 1;
-            addDiv.textContent = `${strike}strike ${ball}ball, 남은 시도: ${count}`
-            result.append(addDiv);
-            strike = 0;
-            ball = 0;
+            result.append(document.createTextNode(`[${input.value}] ${strike}strike ${ball}ball, 남은 시도: ${count}`), document.createElement('br'));
         }
     } else {
         alert('4자리 수를 입력해주세요');
     }
+    input.value = '';
+    input.focus();
 });
 
 

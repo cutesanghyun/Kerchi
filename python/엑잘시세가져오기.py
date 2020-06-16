@@ -2,7 +2,8 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
 
-url = 'https://poe.ninja/challenge/currency'
+
+url = 'https://poe.ninja/standard/currency'
 
 driver = webdriver.Chrome()
 driver.get(url)
@@ -19,14 +20,10 @@ for tr in data:
     if target:
         showprice = tr.find('span',{'class':'currency-amount'}).text
 
-print(showprice)
+currency = open('currency.txt', 'w', encoding='utf8')
+print(showprice, file=currency)
+currency.close()
+
 driver.close()
-
-
-
-# myUrl = 'http://121.175.229.220/Kerchi/PathOfExile/index.html'
-
-# driver = webdriver.Chrome()
-# driver.get(myUrl)
 
 
