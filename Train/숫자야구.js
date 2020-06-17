@@ -17,13 +17,13 @@ check.addEventListener('click', () => {
     if (input.value.length === 4) {
         if (count <= 0) {
             answer = question.join('');
-            result.append(document.createTextNode(`Game Over, 정답은 ${answer} 이었습니다.`));
+            result.append(`Game Over, 정답은 ${answer} 이었습니다.`);
             setTimeout(function () {
                 result.innerHTML = '';
                 reset();
             }, 5000);
         } else if (input.value === question.join('')) {
-            result.append(document.createTextNode('홈런'));            
+            result.append('홈런');            
             setTimeout(function () {
                 result.innerHTML = '';
                 reset();
@@ -39,7 +39,7 @@ check.addEventListener('click', () => {
                 }
             }
             count = count - 1;
-            result.append(document.createTextNode(`[${input.value}] ${strike}strike ${ball}ball, 남은 시도: ${count}`), document.createElement('br'));
+            result.append(`[${input.value}] ${strike}strike ${ball}ball, 남은 시도: ${count}`, document.createElement('br'));
         }
     } else {
         alert('4자리 수를 입력해주세요');

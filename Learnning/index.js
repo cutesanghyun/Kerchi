@@ -1,4 +1,4 @@
-var 목록 = ['HTML','CSS','JavaScript','JavaScript2','Python','AutoHotKey','영어','크롤링'];
+var 목록 = ['HTML','CSS','JavaScript','JavaScript2','Python','AutoHotKey','영어','크롤링','PHP'];
 var i = 0;
 while(i < 목록.length){
   var ii = i + 1;

@@ -61,6 +61,12 @@ let wordbook = {
     masquerade: '가장무도회,가장,겉치레',
     tanner: '무두장이',
     prey: '잡아먹다,먹이,사냥,희생',
+    extinguish: '진화하다,끄다,소멸시키다',
+    impertinent: '무례한,건방진,엉뚱한',
+    debauch: '타락시키다,유혹하다,방탕',
+    mend: '고치다,수선하다',
+    reckon: '생각하다,계산하다,전망하다,간주하다,인지하다',
+    cumulative: '누적되는,누계의',
 }
 
 let wordbook2 = {  

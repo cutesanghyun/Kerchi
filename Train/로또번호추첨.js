@@ -17,21 +17,25 @@ function paintBall(i, target) {
     ball.style.width = '20px';
     ball.style.height = '20px';
     ball.style.textAlign = 'center';
-    ball.style.marginRight = '5px';    
+    ball.style.marginRight = '5px'; 
+    ball.style.color = 'black';   
     let ballColor;
     if (i <= 10) {
         ballColor = 'yellow';
     } else if (i <= 20) {
         ballColor = 'blue';
+        ball.style.color = 'white';
     } else if (i <= 30) {
         ballColor = 'red';
+        ball.style.color = 'white';
     } else if (i <= 40) {
         ballColor = 'black';
+        ball.style.color = 'white';
     } else if (i <= 45) {
         ballColor = 'green'
+        ball.style.color = 'white';
     }
-    ball.style.backgroundColor = ballColor;
-    ball.style.color = 'gray';
+    ball.style.backgroundColor = ballColor;    
     target.appendChild(ball);
 };
 
@@ -51,10 +55,3 @@ setTimeout(function () {
 setTimeout(function () {
     paintBall(bonus, selectlBonus);
 }, 4000);
-
-
-
-
-
-
-
