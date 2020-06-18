@@ -1,9 +1,6 @@
 let wordbook = {  
     swell: '붓다,늘어나다', 
     respite: '휴식,연기',
-    discreetly: '신중히,조심스럽게',
-    strut: '뽐내며걷다,지주,버팀목',
-    vigil: '철야,밤을샌,농성하기',
     imbecile: '바보,얼간이',
     inclination: '성향,의향',
     squirm: '우물쭈물하다,꿈틀거리다',
@@ -13,25 +10,17 @@ let wordbook = {
     urge: '촉구하다,요구하다,주장하다',  
     obsequious: '아첨하는,아부하는',
     scruple:'양심의가책,망설임,미량',
-    levy: '부과하다,징수하다,징수',
     detrimental: '해로운,불리한',
     pledge: '약속하다,맹세하다',
-    meddling: '간섭,참견하는',  
     grudge: '원한,뒤끝',
     encumbrance: '장애물,귀찮은것',  
-    reside: '거주하다,살다,~에있다',  
-    dominion: '지배권,주권',
     debate: '토론,논쟁,논의하다',
     flock: '모이다,떼짓다,유유상종',
     implicate: '연루시키다,혐의,유죄',
     vaguely: '막연히,애매하게,어렴풋이',
     allegation: '의혹,혐의,진술,주장,해명',
-    perimeter: '경계,주변,외곽',
     incest: '근친상간',
-    prance: '활보,의기양양하게걷다',
     allegiance: '충성,충실',
-    affliction: '고통,불행,고뇌',
-    poverty: '빈곤,가난',
     pretentious: '허세부리는,자만하는,자부하는',
     disdain: '경멸하다,경멸',
     suckle: '키우다,젖을먹이다',
@@ -40,18 +29,14 @@ let wordbook = {
     prevail: '만연하다,이기다,팽배하다,우세하다,설득하다',
     condolence: '애도,조의', 
     foray: '약탈,약탈하다,급습하다',
-    quiver: '떨리다,흔들리다',
-    condemn: '비난하다,규탄하다,유죄판결을내리다',
     waddle: '건들거리면서나아가다,어기적걷다',
     compel: '매력적인,강요하다,압도적인,~하게하다',
     rigorous: '혹독한,엄격한,철저한,정밀한',
     mutilate: '훼손,절단,흉악',
     dour: '완고한,엄한,뚱한',
     proclivity: '성향,기질,경향',
-    notion: '개념,생각',
     whimper: '흐느껴울다,낑낑거리다',
-    minstrel: '음유시인,시인,음악가',
-    idle: '게으른,나태한,빈둥거리는,헛되이보내다',   
+    minstrel: '음유시인,시인,음악가', 
     sobriety: '절주,근엄,절제',
     tedious: '지루한,장황한',
     subdue: '가라앉히다,제압하다,억제하다,완화하다', 
@@ -67,9 +52,26 @@ let wordbook = {
     mend: '고치다,수선하다',
     reckon: '생각하다,계산하다,전망하다,간주하다,인지하다',
     cumulative: '누적되는,누계의',
+    prickly: '가시가많은,성가신',
+    moan: '신음,불평,끙끙거리다,한탄하다',
 }
 
-let wordbook2 = {  
+let wordbook2 = { 
+    idle: '게으른,나태한,빈둥거리는,헛되이보내다',  
+    notion: '개념,생각',
+    quiver: '떨리다,흔들리다',
+    condemn: '비난하다,규탄하다,유죄판결을내리다',
+    affliction: '고통,불행,고뇌',
+    poverty: '빈곤,가난', 
+    prance: '활보,의기양양하게걷다',    
+    perimeter: '경계,주변,외곽',
+    reside: '거주하다,살다,~에있다',  
+    dominion: '지배권,주권',
+    meddling: '간섭,참견하는',  
+    levy: '부과하다,징수하다,징수',
+    strut: '뽐내며걷다,지주,버팀목',
+    vigil: '철야,밤을샌,농성하기',
+    discreetly: '신중히,조심스럽게',
     apprentice: '견습생,도제',
     mistreat: '학대하다,차별,오용',  
     template: '형판,견본',
@@ -218,6 +220,7 @@ let wordbook2 = {
     privy: '숨은,비밀의',
     protract: '~을연장하다,질질끌다', 
     stale: '딱딱해진,상한,진부한,김빠진',  
+    spill: '쏟다,유출,누설하다',
 }
 
 let wbLength = document.querySelector('#wbLength')
@@ -243,20 +246,10 @@ for (i = 0; i < wordBookLength; i++) {
     addButton.append(document.createTextNode('확인'));
     miniShowbox.append(addButton, ' ');
 
-    // let addBtn = document.createElement('button');
-    // addBtn.setAttribute('id', `remove${i}`);
-    // addBtn.textContent = '제거'
-    // showWord.append(addBtn);
-    
     addButton.addEventListener('click', () => {
         let n = addButton.id.substring(8);
         let key = valueOfAll[n];
         let value = wordbook[key];
         document.querySelector(`#minishowbox${n}`).append(`${value}`);
-    });
-    // addBtn.addEventListener('click', () => {
-    //     let n = addBtn.id.substring(6);
-    //     let key = valueOfAll[n];
-    //     let value = wordbook[key];   
-    // });                          
+    });                        
 }
